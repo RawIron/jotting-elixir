@@ -3,7 +3,7 @@ language: elixir
 elixir:
   - 1.4
 otp_release:
-  - 19
+  - 19.2
 
 
 script: mix test
