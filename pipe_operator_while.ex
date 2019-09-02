@@ -21,6 +21,27 @@ defmodule PipeOperatorWhile do
     end
   end
 
+  # funcs = list of function/1 with return type boolean
+  # TODO how to test in "when" clause or by compiler
+  def apply_while_false(funcs, enumerable) when is_list(funcs) and is_list(enumerable) do
+    _apply_while_false(funcs, enumerable, {:cont, []})
+  end
+
+  defp _apply_while_false([], _, {_, worked}) do
+    worked
+  end
+
+  defp _apply_while_false(_, _, {:halt, worked}) do
+    worked
+  end
+
+  defp _apply_while_false funcs=[head={_,func}|tail], enumerable, {:cont, worked} do
+    case func.(enumerable) do
+      false  -> _apply_while_false(tail, enumerable, {:cont, worked})
+      true -> _apply_while_false(funcs, enumerable, {:halt, [head|worked]})
+    end
+  end
+
 end
 
 
@@ -53,7 +74,8 @@ defmodule Main do
   funcs = [ {:has_one, fn x -> x |> Enum.any?(fn y -> y == 1 end) end},
             {:is_empty, fn x -> x |> Enum.empty?() end } ]
 
-  IO.inspect PipeOperatorMatch.apply_while funcs, data
-  IO.inspect EnumAppendix.take_while data, fn x -> x < 6 end
-  
+  IO.inspect PipeOperatorWhile.apply_while(funcs, data)
+  IO.inspect PipeOperatorWhile.apply_while_false(funcs, data)
+  IO.inspect EnumAppendix.take_while(data, fn x -> x < 6 end)
+
 end
