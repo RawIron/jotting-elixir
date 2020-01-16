@@ -25,4 +25,4 @@ main :: IO ()
 main = do
   quickCheck prop_reverseInvariant
   runTestTT tests
-  print ""
+  return ()
