@@ -17,9 +17,9 @@ isPalindrom word = word == T.reverse word
 
 prop_reverseInvariant word = isPalindrom word == (isPalindrom $ T.reverse word)
 
-test_palindrome_fail = TestCase (assertBool "hello should fail" (not . isPalindrom $ TC.convertText "(hello)"))
-test_palindrome_ok = TestCase (assertBool "ollo should pass" (isPalindrom $ TC.convertText "$ollo$"))
-tests = TestList [test_palindrome_fail, test_palindrome_ok]
+test_palindrome_fail = assertBool "hello should fail" (not . isPalindrom $ TC.convertText "(hello)")
+test_palindrome_ok = assertBool "ollo should pass" (isPalindrom $ TC.convertText "$ollo$")
+tests = TestList $ TestCase <$> [test_palindrome_fail, test_palindrome_ok]
 
 main :: IO ()
 main = do
