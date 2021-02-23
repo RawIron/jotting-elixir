@@ -3,7 +3,6 @@
 
 ## Elixir
 
-This is about the *elixir* language.
 
 ## Haskell
 
@@ -18,12 +17,12 @@ cabal install test-framework-quickcheck2
 cabal install test-framework-hunit
 ```
 
-* Build
+* Run
 ```
-ghc TextOperators.hs
+runghc TextOperators.hs
 ```
 
 * Run tests
 ```
-./TextOperators
+runghc TextOperators
 ```
