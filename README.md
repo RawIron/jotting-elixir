@@ -1,12 +1,28 @@
-[![Build Status](https://travis-ci.org/RawIron/scratch-elixir.svg)](https://travis-ci.org/RawIron/learning-elixir)
+[![Build Status](https://travis-ci.org/RawIron/jotting-elixir.svg)](https://travis-ci.org/RawIron/jotting-elixir)
 
 
 ## Elixir
 
+### Setup
+check installed elixir
+```
+elixir --version
+```
+
+check installed otp
+```
+erl
+```
+
+### Run Tests
+```
+mix test
+```
+
 
 ## Haskell
 
-* Setup
+### Setup
 ```
 cabal update
 cabal install text-conversions
@@ -17,12 +33,12 @@ cabal install test-framework-quickcheck2
 cabal install test-framework-hunit
 ```
 
-* Run
+### Run
 ```
 runghc TextOperators.hs
 ```
 
-* Run tests
+### Run tests
 ```
 runghc TextOperators
 ```
